@@ -1,20 +1,20 @@
 
 import '@/app/globalicons.css'
-const Card = ({ children, title = "TEST TITLE" }) => {
-
+const Card = ({ children, title = "TEST TITLE", classes ={}} ) => {
+    const {main ="", titleClass = "", body = ""} = classes
     return (
-        <div className=" justify-center mb-3 shadow-md rounded-lg  bg-orange-50">
+        <div className={"justify-center mb-3 shadow-md rounded-lg  bg-orange-50 " + main}>
             {/* header */}
-            <div className="  rounded-t-lg rounded-tr-lg flex  w-auto border border-1 border-gray-100   border-b-0 p-1 justify-items-center">
+            <div className={"rounded-t-lg rounded-tr-lg flex  w-auto border border-1 border-gray-100   border-b-0 p-1 justify-items-center " + titleClass}>
                 <div className="text-black ml-4
-                italic font-bold">
+                 font-bold">
                     {title}
                 </div>
             </div>
-            <div className="p-2 pt-0 border-t-0 rounded-b-lg ml-4 mr-4 rounded-br-lg bg-orange-50  ">
+            <div className={"p-2 pt-0 border-t-0 rounded-b-lg ml-4 mr-4 rounded-br-lg bg-orange-50 " + body}>
                 {children ?? (
                     testData.map((element, index)=> 
-                    <Row name={element.name} 
+                    <Row key={index} name={element.name} 
                     author = {element.author}
                     place={index == 0 ? 'first' : ''}
                     />)
@@ -30,7 +30,7 @@ const Row = ({name, author, place}) =>{
     return(
         <div className = {`w-full h-auto border-2 border-r-0 border-l-0 border-orange-100 hover:bg-orange-100 p-1 cursor-default `+ border}>
             <div className = "text-extrabold">{name}</div>
-            <div className="text-sm text-gray-500 italic">{author}</div>
+            <div className="text-sm text-gray-500">{author}</div>
         </div>
     )
 
